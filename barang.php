@@ -25,6 +25,8 @@ $title = "Daftar Barang";
                                         <th>Nama</th>
                                         <th>Harga</th>
                                         <th>Stok</th>
+                                        <th>Satuan Barang</th>
+                                        <th>Kategori</th>
                                         <th>Gambar</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -43,7 +45,9 @@ $title = "Daftar Barang";
                                         <td><?=$data['nama_barang'];?></td>
                                         <td><?=$data['harga_barang'];?></td>
                                         <td><?=$data['stok_barang'];?></td>
-                                        <td><?=$data['gambar_barang'];?></td>
+                                        <td><?=$data['satuan_barang'];?></td>
+                                        <td><?=$data['id_kategori'];?></td>
+                                        <td><img src="<?=BASE_URL;?>assets/barang/<?=$data['gambar_barang'];?>" width="100" height="100"></td>
                                         <td>
                                             <a href="barang_edit.php?id=<?=$data['id_barang'];?>" class="btn btn-sm btn-success">Edit</a>
                                             <a href="barang_delete.php?id=<?=$data['id_barang'];?>" class="btn btn-sm btn-danger">Hapus</a>
@@ -52,7 +56,7 @@ $title = "Daftar Barang";
                                     <?php
                                         }while($data = mysqli_fetch_assoc($query));
                                     }else{
-                                        echo "<tr><td colspan='6'><center>Belum ada data!</center></td></tr>";
+                                        echo "<tr><td colspan='8'><center>Belum ada data!</center></td></tr>";
                                     }
                                     ?>
                                 </tbody>
