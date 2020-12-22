@@ -1,61 +1,52 @@
-<?php 
-    require "head.php";
-    if(!$_SESSION['admin']) {
-        echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."login.php'/>";
-    }
+<?php
+    require "config/connect.php";
 ?>
-<body id="page-top">
 
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+<!DOCTYPE html>
+<html lang="en">
 
-    <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+<head>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-    </button>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
+    <title><?=$title." ".WEBNAME;?></title>
+    <link href="<?=BASE_URL;?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=BASE_URL;?>assets/css/shop-homepage.css" rel="stylesheet">
 
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-fw"></i>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Dashboard</a>
+                    </li>
+                </ul>
             </div>
-        </li>
-    </ul>
-
-</nav>
-
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="index.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="barang.php">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Barang</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="kategori.php">
-                <i class="fas fa-fw fa-shopping-cart"></i>
-                <span>Kategori</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="Penjualan.php">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Penjualan</span></a>
-        </li>
-    </ul>
-
-    <div id="content-wrapper">
+        </div>
+    </nav>
+    <div class="container">

@@ -1,21 +1,16 @@
 <?php
-    $title="Edit Kategori";
+    $title="Tambah Kategori";
     require"includes/header.php";
 
-    $id = $_GET['id'];
-    $aVar = new mysqli('localhost', 'root', '','online_shop');
-
-    if(isset($_POST['update'])){
+    if(isset($_POST['insert'])){
         $nama = $_POST['nama'];
 
-        $query = mysqli_query($aVar, "update kategori set nama_kategori = '$nama' where id_kategori = '$id'");
+        $aVar = new mysqli('localhost', 'root', '','online_shop');
+        $query = mysqli_query($aVar, "insert into kategori (nama_kategori) value ('$nama')");
         if($query) {
-            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."kategori.php'";
+            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/kategori.php'";
         }
     }
-
-    $query = mysqli_query ($aVar, "select nama_kategori from kategori where id_kategori = '$id'");
-    $data = mysqli_fetch_assoc($query);
 ?>
     <div class="container-fluid">
 
@@ -33,10 +28,10 @@
                         <form method="post" action="">
                             <div class="form-group">
                                 <label>Nama Kategori</label>
-                                <input type="text" name="nama" value="<?=$data['nama_kategori']?>" class="form-control" placeholder="Nama Kategori" required>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama Kategori" required>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="update" value="Simpan" class="btn btn-sm btn-success">
+                                <input type="submit" name="insert" value="Tambah" class="btn btn-sm btn-info">
                             </div>
                         </form>
                     </div>

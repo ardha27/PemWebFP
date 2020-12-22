@@ -1,29 +1,44 @@
 <?php
-    $title="Tambah Barang";
+    $title="Edit Barang";
     require"includes/header.php";
 
-    if(isset($_POST['insert'])){
+    $id = $_GET['id'];
+
+    $aVar = new mysqli('localhost', 'root', '','online_shop');
+    if(isset($_POST['update'])){
         $nama = $_POST['nama'];
         $harga = $_POST['harga'];
         $stok = $_POST['stok'];
         $satuan = $_POST['satuan'];
-        $gambar = $_FILES['gambar']['name'];
-        $file = $_FILES['gambar']['tmp_name'];
         $kategori = $_POST['kategori'];
-        $path = "assets/barang/";
 
-        $aVar = new mysqli('localhost', 'root', '','online_shop');
-        if(move_uploaded_file($file, $path.$gambar)) {
+        if(!empty($_FILES['gambar']['name'])) {
+            $gambar = $_FILES['gambar']['name'];
+            $file = $_FILES['gambar']['tmp_name'];
 
-            $query = mysqli_query($aVar, "insert into barang (nama_barang, harga_barang, stok_barang, satuan_barang, id_kategori, gambar_barang) 
-                                                        value ('$nama', '$harga', '$stok', '$satuan', '$kategori', '$gambar' )");
-            if($query) {
-                echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."barang.php'";
-            }
+            $path = "../assets/barang/";
+            (move_uploaded_file($file, $path.$gambar));
+            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', stok_barang = '$stok', satuan_barang = '$satuan', id_kategori = '$kategori', gambar_barang = '$gambar' 
+                                                            where id_barang='$id' ");
+
+        }else{
+            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', stok_barang = '$stok', satuan_barang = '$satuan', id_kategori = '$kategori'
+                                                        where id_barang='$id' ");
+
         }
 
         
+
+            
+            if($query) {
+                echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/barang.php'";
+            }
+        
+
+        
     }
+    $Qbarang = mysqli_query ($aVar, "select * from barang where id_barang = '$id'");
+    $barang = mysqli_fetch_assoc($Qbarang);
 ?>
     <div class="container-fluid">
 
@@ -43,23 +58,24 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Nama Barang</label>
-                                        <input type="text" name="nama" class="form-control" placeholder="Nama Barang" required>
+                                        <input type="text" name="nama" value="<?=$barang['nama_barang'];?>" class="form-control" placeholder="Nama Barang" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Harga Barang</label>
-                                        <input type="number" name="harga" class="form-control" placeholder="Harga Barang" required>
+                                        <input type="number" name="harga" value="<?=$barang['harga_barang'];?>" class="form-control" placeholder="Harga Barang" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Stok Barang</label>
-                                        <input type="number" name="stok" class="form-control" placeholder="Stok Barang" required>
+                                        <input type="number" name="stok" value="<?=$barang['stok_barang'];?>" class="form-control" placeholder="Stok Barang" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Satuan Barang</label>
-                                        <input type="text" name="satuan" class="form-control" placeholder="Satuan Barang" required>
+                                        <input type="text" name="satuan" value="<?=$barang['satuan_barang'];?>" class="form-control" placeholder="Satuan Barang" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Gambar Barang</label>
-                                        <input type="file" name="gambar" class="form-control" required>
+                                        <input type="file" name="gambar" class="form-control"> <br>
+                                        <img src="<?=BASE_URL;?>assets/barang/<?=$barang['gambar_barang'];?> "width="100" height="100">
                                     </div>
                                     <div class="form-group">
                                         <label>Kategori Barang</label>
@@ -71,15 +87,19 @@
                                                 $kategori = mysqli_fetch_assoc($Qkategori);
 
                                                 do {
+                                                    $select = "";
+                                                    if($barang['id_kategori'] == $kategori['id_kategori']) {
+                                                        $select = "selected";
+                                                    }
                                             ?>                              
-                                                <option value="<?=$kategori['id_kategori'];?>"><?=$kategori['nama_kategori'];?></option>
+                                                <option value="<?=$kategori['id_kategori'];?>" <?=$select;?>><?=$kategori['nama_kategori'];?></option>
                                             <?php
                                                 }while($kategori = mysqli_fetch_assoc($Qkategori))
                                             ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" name="insert" value="Tambah" class="btn btn-sm btn-info">
+                                        <input type="submit" name="update" value="Simpan" class="btn btn-sm btn-success">
                                     </div>
                                 </div>
                             </div>

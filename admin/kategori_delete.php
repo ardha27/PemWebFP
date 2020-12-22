@@ -5,6 +5,6 @@
     $aVar = new mysqli('localhost', 'root', '','online_shop');
     $query = mysqli_query($aVar, "delete from kategori where id_kategori ='$id'");
     if($query) {
-        echo "<meta http-equiv='refresh' content='0, url=".BASE_URL."kategori.php'/>";
+        echo "<meta http-equiv='refresh' content='0, url=".BASE_URL."admin/kategori.php'/>";
     }
 ?>

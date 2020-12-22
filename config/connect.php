@@ -5,6 +5,7 @@ $password = "";
 $database = "online_shop";
 // Create connection
 define("BASE_URL", "http://localhost/online_shop/");
+define("WEBNAME", "Online Shop");
 $conn = new mysqli($servername, $username, $password,$database);
 
 // Check connection
