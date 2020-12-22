@@ -13,7 +13,7 @@
         $row = mysqli_num_rows($query);
         if($row > 0) {
             $_SESSION['admin'] = true;
-            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."index.php'/>";
+            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/index.php'/>";
         }else {
             $err = "Login gagal";
         }

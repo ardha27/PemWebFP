@@ -5,6 +5,11 @@
     if(isset($_GET['filter'])) {
         $query = mysqli_query($conn, "select * from barang where id_kategori = '".$_GET['filter']."'");
         $data = mysqli_fetch_assoc($query);
+    }else
+    if(isset($_GET['s'])) {
+        $key = "%".$_GET['s']."%";
+        $query = mysqli_query($conn, "select * from barang where nama_barang like '$key'");
+        $data = mysqli_fetch_assoc($query);
     }else {
         $query = mysqli_query($conn, "select * from barang order by id_barang DESC");
         $data = mysqli_fetch_assoc($query);
@@ -33,6 +38,16 @@
 </div>
 
 <div class="col-lg-9">
+    <div class="col-lg-12 mt-3">
+        <form action="">
+            <div class="form-group">
+                <input class="form-control" type="serach" name="s" value="<?php if(isset($_GET['s'])) {echo $_GET['s'];} ?>" placeholder="Masukkan Nama Produk">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-info btn-sm" value="Cari Produk">
+            </div>
+        </form>
+    </div>
 
     <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -73,7 +88,7 @@
                             <h4 class="card-title">
                                 <a href="tampil.php?id=<?=$data['id_barang'];?>"><?=$data['nama_barang'];?></a>
                             </h4>
-                            <h5>Rp. <?=$data['harga_barang'];?></h5>
+                            <h5>Rp. <?=number_format ($data['harga_barang']);?></h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                         </div>
                         <div class="card-footer">
