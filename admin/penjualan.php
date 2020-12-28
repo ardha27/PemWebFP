@@ -1,5 +1,5 @@
 <?php
-$title = "Daftar Kategori";
+$title = "Daftar Penjualan";
     require"includes/header.php";
 ?>
     <div class="container-fluid">
@@ -13,38 +13,49 @@ $title = "Daftar Kategori";
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fas fa-table"></i> Data Table Kategori
-                        <a href="kategori_tambah.php" class="btn btn-sm btn-info">Tambah</a>
+                        <i class="fas fa-table"></i> Data Table Penjualan
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th style='text-align:center'>No</th>
-                                        <th style='text-align:center'>Name</th>
-                                        <th style='text-align:center'>Aksi</th>
+                                        <th>No</th>
+                                        <th>Nama Pembeli</th>
+                                        <th>Nama Barang</th>
+                                        <th>Harga</th>
+                                        <th>Qty</th>
+                                        <th>Jumlah</th>
                                     </tr>
                                 </thead>
-                                <tbody style="width:100%">
+                                <tbody>
                                     <?php
-                                        $aVar = new mysqli('localhost', 'root', '','online_shop');
-                                        $query = mysqli_query($aVar, "select * from kategori");
+                                        $query = mysqli_query($conn, "select barang .*, penjualan.*, customer.* from penjualan
+                                                                        left join barang on barang.id_barang = penjualan.id_barang
+                                                                        left join customer on customer.id_customer = penjualan.id_customer");
                                         $data = mysqli_fetch_assoc($query);
                                         if(mysqli_num_rows($query) > 0) {
                                         $no = 1;
+                                        $total = 0;
                                         do {
+                                            $total += $data['harga_barang'] * $data['qty_penjualan'];
                                     ?>
                                     <tr>
-                                        <td style="width:5%;text-align:center"><?=$no++;?></td>
-                                        <td style="width:80%;text-align:center"><?=$data['nama_kategori'];?></td>
-                                        <td style="width:15%;text-align:center">
-                                            <a href="kategori_edit.php?id=<?=$data['id_kategori'];?>" class="btn btn-sm btn-success">Edit</a>
-                                            <a href="kategori_delete.php?id=<?=$data['id_kategori'];?>" class="btn btn-sm btn-danger">Hapus</a>
-                                        </td>
+                                        <td><?=$no++;?></td>
+                                        <td><?=$data['nama_customer'];?></td>
+                                        <td><?=$data['nama_barang'];?></td>
+                                        <td style='text-align:center'>Rp. <?=number_format($data['harga_barang']);?></td>
+                                        <td style='text-align:center'><?=$data['qty_penjualan'];?></td>
+                                        <td style='text-align:right'>Rp. <?=number_format($data['harga_barang'] * $data['qty_penjualan']);?></td>
                                     </tr>
                                     <?php
                                         }while($data = mysqli_fetch_assoc($query));
+
+                                        echo    "<tr>
+                                                <td style='text-align:right' colspan='5'>TOTAL</td>
+                                                <td style='text-align:right'>Rp. ".number_format($total).",-</td>
+                                                </tr>";
+
                                     }else{
                                         echo "<tr><td colspan='3'><center>Belum ada data!</center></td></tr>";
                                     }

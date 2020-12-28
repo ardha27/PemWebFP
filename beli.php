@@ -1,24 +1,30 @@
 <?php
-    $title= "Tampil Produk";
+    $title= "Beli Produk";
     require "includes/header.php";
 
 ?>
 
-<form action="beli.php" method="post">
+<form action="bayar.php" method="post">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
         <h2>Isi Detail Informasi</h2>
             <div class="form-group">
-                <label for="">Nama Lengkap</label>
-                <input class="form-control" type="text" name="nama" placeholder="Nama Lengkap" required>
+                <div class="form-label-group">
+                    <label for="">Nama Lengkap</label>
+                    <input class="form-control" type="text" name="nama" placeholder="Nama Lengkap" required>
+                </div>
             </div>
             <div class="form-group">
-                <label for="">No. Telp</label>
-                <input class="form-control" type="text" name="phone" placeholder="No. Telp" required>
+                <div class="form-label-group">
+                    <label for="">No. Telp</label>
+                    <input class="form-control" type="text" name="phone" placeholder="No. Telp" required>
+                </div>
             </div>
             <div class="form-group">
-                <label for="">Alamat Lengkap</label>
-                <textarea class="form-control" name="alamat" required></textarea>
+                <div class="form-label-group">
+                    <label for="">Alamat Lengkap</label>
+                    <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap" required></textarea>
+                </div>
             </div>
             <div class="form-group">
                 <input class="btn btn-sm btn-success" type="submit" name="bayar" value="Bayar Sekarang">
