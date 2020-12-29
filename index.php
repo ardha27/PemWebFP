@@ -20,7 +20,7 @@
 
 <div class="col-lg-3">
 
-    <h1 class="my-4">Shop Name</h1>
+    <h1 class="my-4">Olshop</h1>
     <div class="list-group">
         <a href="<?=BASE_URL;?>" class="list-group-item">Semua Kategori</a>
         <?php
@@ -38,17 +38,26 @@
 </div>
 
 <div class="col-lg-9">
-    <div class="col-lg-12 mt-3">
-        <form action="">
-            <div class="form-group">
-                <input class="form-control" type="serach" name="s" value="<?php if(isset($_GET['s'])) {echo $_GET['s'];} ?>" placeholder="Masukkan Nama Produk">
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-info btn-sm" value="Cari Produk">
-            </div>
-        </form>
+    <div class="row">
+        <div class="col-lg-12 mt-3">
+            <form action="">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                        <input class="form-control" type="serach" name="s" value="<?php if(isset($_GET['s'])) {echo $_GET['s'];} ?>" placeholder="Masukkan Nama Produk">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <input type="submit" class="btn btn-info btn-sm" value="Cari Produk">
+                    </div>
+                    </div>
+                </div>
+                
+                
+            </form>
+        </div>
     </div>
-
     <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

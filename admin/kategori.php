@@ -6,9 +6,9 @@ $title = "Daftar Kategori";
 
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="<?=BASE_URL;?>/admin/index.php">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item active">Tables</li>
+                    <li class="breadcrumb-item active">Tables Kategori</li>
                 </ol>
 
                 <div class="card mb-3">
@@ -64,8 +64,8 @@ $title = "Daftar Kategori";
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -77,19 +77,19 @@ $title = "Daftar Kategori";
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="assets/vendor/datatables/dataTables.bootstrap4.js"></script>
-    <script src="assets/js/sb-admin.min.js"></script>
-    <script src="assets/js/demo/datatables-demo.js"></script>
+    <script src="<?=BASE_URL;?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=BASE_URL;?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=BASE_URL;?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?=BASE_URL;?>assets/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="<?=BASE_URL;?>assets/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="<?=BASE_URL;?>assets/js/sb-admin.min.js"></script>
+    <script src="<?=BASE_URL;?>assets/js/demo/datatables-demo.js"></script>
 
 </body>
 

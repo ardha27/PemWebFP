@@ -21,14 +21,17 @@
 
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
+                        <a href="<?=BASE_URL;?>/admin/index.php">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item active">Tables</li>
+                    <li class="breadcrumb-item">
+                        <a href="<?=BASE_URL;?>/admin/kategori.php">Tables Kategori</a>
+                    </li>
+                    <li class="breadcrumb-item active">Tables Edit Kategori</li>
                 </ol>
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fas fa-table"></i> Data Table Example</div>
+                        <i class="fas fa-table"></i> Data Edit Kategori</div>
                     <div class="card-body">
                         <form method="post" action="">
                             <div class="form-group">
@@ -51,8 +54,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -64,7 +67,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>

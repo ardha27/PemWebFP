@@ -22,7 +22,12 @@
                     <div class="card-body">
                         <h5>Rp. <?=number_format ($data['harga_barang']);?>/<?=$data['satuan_barang'];?></h5>
                         <div class="form-group">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <ul style="list-style-type:none">
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                            </ul>
                             <label for="">Qty:</label>
                             <input type="number" value="1" name="qty" class="col-lg-2 form-control" required>
                         </div>

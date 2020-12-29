@@ -34,16 +34,10 @@
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="<?=BASE_URL;?>/about.php">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Dashboard</a>
+                        <a class="nav-link" href="<?=BASE_URL;?>/kontak.php">Contact</a>
                     </li>
                 </ul>
             </div>
