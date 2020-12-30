@@ -41,6 +41,8 @@
                     </div>
                     <input type="submit" class="btn btn-primary btn-block" value="Login" name="login">
                 </form>
+                <br>
+                <p>Bukan Admin? Kembali ke <a href="<?=BASE_URL;?>/index.php">HOME</a></p>
                 <p><?=$err;?></p>
             </div>
         </div>

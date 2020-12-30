@@ -23,10 +23,29 @@
                 $data = mysqli_fetch_assoc($Qbarang);
 
 ?>
-    <div class="row">
+
+<main id="main">
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+        <h2>Pembayaran</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tampil.php?id=<?=$data['id_barang'];?>"><?=$data['nama_barang'];?></a></li>
+            <li>Pembayaran</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="inner-page">
+      <div class="container">
+      <div class="row">
         <div class="col-md-12">
         <h2>Detail Pembayaran</h2>
-        <table class="table">
+        <table class="table" style="color:grey">
             <thead>
             <tr>
                 <th>Nama Barang</th>
@@ -47,11 +66,14 @@
             <h3>Total Yang Harus dibayar : Rp. <?=number_format($data['harga_barang'] * $qty);?></h3>
         </div>
         <div class=col-md-12>
-        <br>
-        <p>Informasi Pembayaran : </p>
-        <p></p>
         </div>   
     </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
 <?php
             }       
         }

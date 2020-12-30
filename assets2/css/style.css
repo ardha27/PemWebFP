@@ -971,7 +971,9 @@ section {
 }
 
 .menu .menu-content::after {
-  content: "......................................................................" "...................................................................." "....................................................................";
+  content: "......................................................................"
+ "...................................................................."
+ "....................................................................";
   position: absolute;
   left: 20px;
   right: 0;
@@ -1622,6 +1624,19 @@ section {
   background: #d3af71;
 }
 
+.tampil .php-email-form button[type="submit"] {
+  background: #cda45e;
+  border: 0;
+  padding: 10px 35px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.tampil .php-email-form button[type="submit"]:hover {
+  background: #d3af71;
+}
+
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);
@@ -1638,6 +1653,15 @@ section {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.tampil input[type="submit"] {
+  background: #cda45e;
+  border: 0;
+  padding: 10px 35px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
 }
 
 /*--------------------------------------------------------------
