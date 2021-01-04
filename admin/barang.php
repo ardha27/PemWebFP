@@ -11,21 +11,19 @@ $title = "Daftar Barang";
                     <li class="breadcrumb-item active">Tables Barang</li>
                 </ol>
 
-                <div class="card mb-3">
+                <div class="card mb-3" style="color:black">
                     <div class="card-header">
                         <i class="fas fa-table"></i> Data Table Barang
                         <a href="barang_tambah.php" class="btn btn-sm btn-info">Tambah</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:black">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Harga</th>
-                                        <th>Stok</th>
-                                        <th>Satuan Barang</th>
                                         <th>Kategori</th>
                                         <th>Gambar</th>
                                         <th>Aksi</th>
@@ -44,8 +42,6 @@ $title = "Daftar Barang";
                                         <td><?=$no++;?></td>
                                         <td><?=$data['nama_barang'];?></td>
                                         <td><?=$data['harga_barang'];?></td>
-                                        <td><?=$data['stok_barang'];?></td>
-                                        <td><?=$data['satuan_barang'];?></td>
                                         <td><?=$data['id_kategori'];?></td>
                                         <td><img src="<?=BASE_URL;?>assets/barang/<?=$data['gambar_barang'];?>" width="100" height="100"></td>
                                         <td>
@@ -56,7 +52,7 @@ $title = "Daftar Barang";
                                     <?php
                                         }while($data = mysqli_fetch_assoc($query));
                                     }else{
-                                        echo "<tr><td colspan='8'><center>Belum ada data!</center></td></tr>";
+                                        echo "<tr><td colspan='6'><center>Belum ada data!</center></td></tr>";
                                     }
                                     ?>
                                 </tbody>

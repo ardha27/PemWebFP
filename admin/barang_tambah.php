@@ -5,8 +5,6 @@
     if(isset($_POST['insert'])){
         $nama = $_POST['nama'];
         $harga = $_POST['harga'];
-        $stok = $_POST['stok'];
-        $satuan = $_POST['satuan'];
         $gambar = $_FILES['gambar']['name'];
         $file = $_FILES['gambar']['tmp_name'];
         $kategori = $_POST['kategori'];
@@ -15,8 +13,8 @@
         $aVar = new mysqli('localhost', 'root', '','online_shop');
         if(move_uploaded_file($file, $path.$gambar)) {
 
-            $query = mysqli_query($aVar, "insert into barang (nama_barang, harga_barang, stok_barang, satuan_barang, id_kategori, gambar_barang) 
-                                                        value ('$nama', '$harga', '$stok', '$satuan', '$kategori', '$gambar' )");
+            $query = mysqli_query($aVar, "insert into barang (nama_barang, harga_barang, id_kategori, gambar_barang) 
+                                                        value ('$nama', '$harga', '$kategori', '$gambar' )");
             if($query) {
                 echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/barang.php'";
             }
@@ -38,10 +36,10 @@
                 </ol>
 
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header" style="color:black">
                         <i class="fas fa-table"></i> Data Tambah Barang</div>
                     <div class="card-body">
-                        <form method="post" action="" enctype="multipart/form-data" >
+                        <form method="post" action="" enctype="multipart/form-data" style="color:black">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -51,14 +49,6 @@
                                     <div class="form-group">
                                         <label>Harga Barang</label>
                                         <input type="number" name="harga" class="form-control" placeholder="Harga Barang" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Stok Barang</label>
-                                        <input type="number" name="stok" class="form-control" placeholder="Stok Barang" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Satuan Barang</label>
-                                        <input type="text" name="satuan" class="form-control" placeholder="Satuan Barang" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Gambar Barang</label>

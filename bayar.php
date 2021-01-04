@@ -31,7 +31,7 @@
         <div class="d-flex justify-content-between align-items-center">
         <h2>Pembayaran</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="tampil.php?id=<?=$data['id_barang'];?>"><?=$data['nama_barang'];?></a></li>
             <li>Pembayaran</li>
           </ol>

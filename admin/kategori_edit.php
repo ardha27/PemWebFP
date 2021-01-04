@@ -29,11 +29,11 @@
                     <li class="breadcrumb-item active">Tables Edit Kategori</li>
                 </ol>
 
-                <div class="card mb-3">
+                <div class="card mb-3" style="color:black">
                     <div class="card-header">
                         <i class="fas fa-table"></i> Data Edit Kategori</div>
                     <div class="card-body">
-                        <form method="post" action="">
+                        <form method="post" action="" style="color:black">
                             <div class="form-group">
                                 <label>Nama Kategori</label>
                                 <input type="text" name="nama" value="<?=$data['nama_kategori']?>" class="form-control" placeholder="Nama Kategori" required>

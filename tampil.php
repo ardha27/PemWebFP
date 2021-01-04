@@ -21,7 +21,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Detail Menu</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><?=$data['nama_barang'];?></li>
           </ol>
         </div>
@@ -41,7 +41,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h1 class="my-4"><?=$data['nama_barang'];?></h1>
-                                <h5>Rp. <?=number_format ($data['harga_barang']);?>/<?=$data['satuan_barang'];?></h5>
+                                <h5>Rp. <?=number_format ($data['harga_barang']);?></h5>
                                 <div class="form-group">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                     <label for="">Qty:</label>

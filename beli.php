@@ -2,11 +2,6 @@
     $title= "Beli Produk";
     require "includes/header.php";
 
-    $query = mysqli_query ($conn, "select kategori.*, barang.* from barang 
-                                left join kategori on kategori.id_kategori = barang.id_kategori
-                                where id_barang='$id'");
-    $data = mysqli_fetch_assoc ($query);
-
 ?>
 
 <main id="main">
@@ -16,7 +11,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Detail Pembeli</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li>Detail Pembeli</li>
           </ol>
         </div>

@@ -12,13 +12,13 @@ $title = "Daftar Kategori";
                 </ol>
 
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header" style="color:black">
                         <i class="fas fa-table"></i> Data Table Kategori
                         <a href="kategori_tambah.php" class="btn btn-sm btn-info">Tambah</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:black">
                                 <thead>
                                     <tr>
                                         <th style='text-align:center'>No</th>

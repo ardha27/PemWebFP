@@ -25,10 +25,10 @@
                 </ol>
 
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header" style="color:black">
                         <i class="fas fa-table"></i> Data Tambah Kategori</div>
                     <div class="card-body">
-                        <form method="post" action="">
+                        <form method="post" action="" style="color:black">
                             <div class="form-group">
                                 <label>Nama Kategori</label>
                                 <input type="text" name="nama" class="form-control" placeholder="Nama Kategori" required>

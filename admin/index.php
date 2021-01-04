@@ -1,6 +1,22 @@
 <?php
     $title ="Dashboard Admin";
     require "includes/header.php";
+
+    $query1 = mysqli_query($conn, "SELECT COUNT(id_barang) AS Jumlah FROM barang");
+    $jumlah = mysqli_fetch_assoc ($query1);
+    $query2 = mysqli_query($conn, "SELECT COUNT(id_kategori) AS Jumlah FROM kategori");
+    $kategori = mysqli_fetch_assoc ($query2);
+    $query3 = mysqli_query($conn, "select barang .*, penjualan.* from penjualan left join barang on barang.id_barang = penjualan.id_barang");
+    $penjualan = mysqli_fetch_assoc ($query3);
+    $query4 = mysqli_query($conn, "SELECT COUNT(id_penjualan) AS Jumlah FROM penjualan");
+    $transaksi = mysqli_fetch_assoc ($query4);
+    $total = 0;
+    if(mysqli_num_rows($query3) > 0) {
+
+        do {
+            $total += $penjualan['harga_barang'] * $penjualan['qty_penjualan'];
+        }while($penjualan = mysqli_fetch_assoc($query3));
+    }
 ?>
 
 <div class="container-fluid">
@@ -19,9 +35,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">26 New Messages!</div>
+                <div class="mr-5"><?=$jumlah['Jumlah'];?> Menu</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?=BASE_URL;?>admin/barang.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
   <i class="fas fa-angle-right"></i>
@@ -35,9 +51,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                 </div>
-                <div class="mr-5">11 New Tasks!</div>
+                <div class="mr-5"><?=$kategori['Jumlah'];?> Kategori</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?=BASE_URL;?>admin/Kategori.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
   <i class="fas fa-angle-right"></i>
@@ -51,9 +67,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                 </div>
-                <div class="mr-5">123 New Orders!</div>
+                <div class="mr-5"><?=$transaksi['Jumlah'];?> Transaksi</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?=BASE_URL;?>admin/penjualan.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
   <i class="fas fa-angle-right"></i>
@@ -67,9 +83,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-life-ring"></i>
                 </div>
-                <div class="mr-5">13 New Tickets!</div>
+                <div class="mr-5">Penjualan : Rp. <?=number_format($total);?></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?=BASE_URL;?>admin/penjualan.php">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
   <i class="fas fa-angle-right"></i>
@@ -88,72 +104,6 @@
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
 
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fas fa-table"></i> Data Table Example</div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
-                    </tr>
-                    <tr>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td>2008/11/28</td>
-                        <td>$162,700</td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
-
 </div>
 
 </div>
@@ -167,14 +117,14 @@
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body" >Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="logout.php">Logout</a>

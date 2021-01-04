@@ -8,8 +8,6 @@
     if(isset($_POST['update'])){
         $nama = $_POST['nama'];
         $harga = $_POST['harga'];
-        $stok = $_POST['stok'];
-        $satuan = $_POST['satuan'];
         $kategori = $_POST['kategori'];
 
         if(!empty($_FILES['gambar']['name'])) {
@@ -18,11 +16,11 @@
 
             $path = "../assets/barang/";
             (move_uploaded_file($file, $path.$gambar));
-            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', stok_barang = '$stok', satuan_barang = '$satuan', id_kategori = '$kategori', gambar_barang = '$gambar' 
+            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', id_kategori = '$kategori', gambar_barang = '$gambar' 
                                                             where id_barang='$id' ");
 
         }else{
-            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', stok_barang = '$stok', satuan_barang = '$satuan', id_kategori = '$kategori'
+            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', id_kategori = '$kategori'
                                                         where id_barang='$id' ");
 
         }
@@ -53,10 +51,10 @@
                 </ol>
 
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header" style="color:black">
                         <i class="fas fa-table"></i> Data Edit Barang</div>
                     <div class="card-body">
-                        <form method="post" action="" enctype="multipart/form-data" >
+                        <form method="post" action="" enctype="multipart/form-data" style="color:black">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -68,14 +66,6 @@
                                         <input type="number" name="harga" value="<?=$barang['harga_barang'];?>" class="form-control" placeholder="Harga Barang" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Stok Barang</label>
-                                        <input type="number" name="stok" value="<?=$barang['stok_barang'];?>" class="form-control" placeholder="Stok Barang" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Satuan Barang</label>
-                                        <input type="text" name="satuan" value="<?=$barang['satuan_barang'];?>" class="form-control" placeholder="Satuan Barang" required>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Gambar Barang</label>
                                         <input type="file" name="gambar" class="form-control"> <br>
                                         <img src="<?=BASE_URL;?>assets/barang/<?=$barang['gambar_barang'];?> "width="100" height="100">
@@ -85,8 +75,7 @@
                                         <select name="kategori" class="form-control" required>
                                             <option>-- Pilih Kategori</option>
                                             <?php
-                                                $aVar = new mysqli('localhost', 'root', '','online_shop');
-                                                $Qkategori = mysqli_query($aVar, "SELECT * FROM kategori");
+                                                $Qkategori = mysqli_query($conn, "SELECT * FROM kategori");
                                                 $kategori = mysqli_fetch_assoc($Qkategori);
 
                                                 do {
