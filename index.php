@@ -70,7 +70,7 @@
 
         <div class="section-title">
           <h2>Why Us</h2>
-          <p>Why Choose Our Catering</p>
+          <p>Why Choose Our Cafe</p>
         </div>
 
         <div class="row">

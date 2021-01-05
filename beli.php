@@ -19,7 +19,7 @@
       </div>
     </section>
 
-    <section class="inner-page">
+    <section class="tampil" id="tampil">
       <div class="container">
       <form action="bayar.php" method="post">
     <div class="row">
