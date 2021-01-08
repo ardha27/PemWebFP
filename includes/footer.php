@@ -8,7 +8,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Dapoerku</h3>
+              <h3>NAMASTA</h3>
               <p>
                 Jalan Laksamana Nomor 89, <br>
                 Baktiseraga, Buleleng<br><br>
