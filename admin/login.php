@@ -43,6 +43,7 @@
             $id_user = $row['id_user'];
             $user_user = $row['user_user'];
             $pass_temp = $row['pass_user'];
+            $role_user = $row['role'];
         }
         $cek = password_verify($pass, $pass_temp);
         if ($cek) {
@@ -52,11 +53,17 @@
             $_SESSION['user_user'] = $user_user;
             $_SESSION['id_user'] = $id_user;
             print $row_found;
-            echo 'Mashoook'.$_SESSION['user_user'];
-            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."index.php'/>";
+            echo 'Mashoook'.$role_user;
+            if ($role_user == 1) {
+                echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."index.php'/>";    
+            }
+            else if ($role_user == 2) {
+                $_SESSION['admin'] = true;
+                echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/index.php'/>";    
+            }
+
         } else {
             echo 'Password salah';
-
         }
     }
 
