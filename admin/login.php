@@ -3,26 +3,65 @@
     require "includes/head.php";
     $err = "";
 
-    if(isset($_POST['login'])) {
+  /* if(isset($_POST['login'])) {
         $user = $_POST['user'];
         $pass = MD5 ($_POST['pass']);
 
         $query = mysqli_query ($conn, "select * from admin where user_admin = '$user' and pass_admin = '$pass'");
-        $row = mysqli_num_rows($query);
+        $result = mysqli_num_rows($query);
 
         $query1 = mysqli_query ($conn, "select * from user where user_user = '$user' and pass_user = '$pass'");
-        $row1 = mysqli_num_rows($query1);
+        $result1 = mysqli_num_rows($query1);
 
-        if($row > 0) {
+        if($result > 0) {
             $_SESSION['admin'] = true;
             echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/index.php'/>";
-        }else if ($row1 > 0) {
+        }else if ($result1 > 0) {
             $_SESSION['user'] = true;
-            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."index.php'/>";
+                $_SESSION['nama_user'] = $result1['nama_user'];
+
+                echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."index.php'/>";
+            
+            
         }else {
             $err = "Login gagal";
         }
+    } */
+
+
+   if (isset($_POST['login'])) {
+
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+
+    $check_user = mysqli_query($conn, "SELECT * FROM user WHERE user_user = '$user'");
+    $row_found = mysqli_num_rows($check_user);
+    
+    if ($row_found) {
+        while ($row = mysqli_fetch_assoc($check_user)) {
+            $nama_user = $row['nama_user'];
+            $id_user = $row['id_user'];
+            $user_user = $row['user_user'];
+            $pass_temp = $row['pass_user'];
+        }
+        $cek = password_verify($pass, $pass_temp);
+        if ($cek) {
+            
+            //session_start();
+            $_SESSION['nama_user'] = $nama_user;
+            $_SESSION['user_user'] = $user_user;
+            $_SESSION['id_user'] = $id_user;
+            print $row_found;
+            echo 'Mashoook'.$_SESSION['user_user'];
+            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."index.php'/>";
+        } else {
+            echo 'Password salah';
+
+        }
     }
+
+    //echo 'masuk lur';
+}
 
 ?>
 <body class="bg-dark">

@@ -1,5 +1,7 @@
-<?php session_start();
+<?php 
 require "../config/connect.php";
+ob_start();
+session_start();
 ?>
 
 <!DOCTYPE html>

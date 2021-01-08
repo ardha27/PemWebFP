@@ -25,12 +25,21 @@
     <div class="row">
         <div class="col-md-4">
         <h2>Isi Detail Informasi</h2>
+          <?php if($_SESSION) : ?>
+            <div class="form-group">
+                <div class="form-label-group">
+                    <label for="">Nama Lengkap</label>
+                    <input class="form-control" type="text" name="nama" value="<?php echo $_SESSION['nama_user']; ?>" placeholder="Nama Lengkap" required>
+                </div>
+            </div>
+          <?php else : ?>
             <div class="form-group">
                 <div class="form-label-group">
                     <label for="">Nama Lengkap</label>
                     <input class="form-control" type="text" name="nama" placeholder="Nama Lengkap" required>
                 </div>
             </div>
+          <?php endif ; ?>
             <div class="form-group">
                 <div class="form-label-group">
                     <label for="">No. Telp</label>

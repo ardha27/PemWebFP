@@ -5,7 +5,9 @@
     if(isset($_POST['signup'])) {
         $name = $_POST['name'];
         $user = $_POST['user'];
-        $pass = MD5 ($_POST['pass']);
+        $pass = $_POST['pass'];
+
+        $pass = password_hash($pass, PASSWORD_BCRYPT);
 
         $query = mysqli_query ($conn, "insert into user (nama_user, user_user, pass_user) 
                                                         value ('$name', '$user', '$pass')");

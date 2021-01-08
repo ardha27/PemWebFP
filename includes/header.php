@@ -1,5 +1,6 @@
 <?php  
     require "config/connect.php";
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +81,11 @@
           <li><a href="#specials">Specials</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
+          <?php if($_SESSION) : ?>
+          <li class="book-a-table text-center"><a href="<?=BASE_URL;?>admin/logout.php">Logout</a></li>
+          <?php else : ?>
           <li class="book-a-table text-center"><a href="<?=BASE_URL;?>admin/login.php">Login</a></li>
+          <?php endif ; ?>
         </ul>
       </nav><!-- .nav-menu -->
 
