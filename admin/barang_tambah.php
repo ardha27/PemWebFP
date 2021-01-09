@@ -10,10 +10,9 @@
         $kategori = $_POST['kategori'];
         $path = "../assets/barang/";
 
-        $aVar = new mysqli('localhost', 'root', '','online_shop');
         if(move_uploaded_file($file, $path.$gambar)) {
 
-            $query = mysqli_query($aVar, "insert into barang (nama_barang, harga_barang, id_kategori, gambar_barang) 
+            $query = mysqli_query($conn, "insert into barang (nama_barang, harga_barang, id_kategori, gambar_barang) 
                                                         value ('$nama', '$harga', '$kategori', '$gambar' )");
             if($query) {
                 echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/barang.php'";
@@ -59,8 +58,7 @@
                                         <select name="kategori" class="form-control" required>
                                             <option>-- Pilih Kategori</option>
                                             <?php
-                                                $aVar = new mysqli('localhost', 'root', '','online_shop');
-                                                $Qkategori = mysqli_query($aVar, "SELECT * FROM kategori");
+                                                $Qkategori = mysqli_query($conn, "SELECT * FROM kategori");
                                                 $kategori = mysqli_fetch_assoc($Qkategori);
 
                                                 do {

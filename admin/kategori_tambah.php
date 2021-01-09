@@ -5,8 +5,7 @@
     if(isset($_POST['insert'])){
         $nama = $_POST['nama'];
 
-        $aVar = new mysqli('localhost', 'root', '','online_shop');
-        $query = mysqli_query($aVar, "insert into kategori (nama_kategori) value ('$nama')");
+        $query = mysqli_query($conn, "insert into kategori (nama_kategori) value ('$nama')");
         if($query) {
             echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/kategori.php'";
         }

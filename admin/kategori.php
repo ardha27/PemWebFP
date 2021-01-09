@@ -28,8 +28,7 @@ $title = "Daftar Kategori";
                                 </thead>
                                 <tbody style="width:100%">
                                     <?php
-                                        $aVar = new mysqli('localhost', 'root', '','online_shop');
-                                        $query = mysqli_query($aVar, "select * from kategori");
+                                        $query = mysqli_query($conn, "select * from kategori");
                                         $data = mysqli_fetch_assoc($query);
                                         if(mysqli_num_rows($query) > 0) {
                                         $no = 1;

@@ -31,8 +31,7 @@ $title = "Daftar Barang";
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $aVar = new mysqli('localhost', 'root', '','online_shop');
-                                        $query = mysqli_query($aVar, "select * from barang");
+                                        $query = mysqli_query($conn, "select * from barang");
                                         $data = mysqli_fetch_assoc($query);
                                         if(mysqli_num_rows($query) > 0) {
                                         $no = 1;

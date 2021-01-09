@@ -4,7 +4,6 @@
 
     $id = $_GET['id'];
 
-    $aVar = new mysqli('localhost', 'root', '','online_shop');
     if(isset($_POST['update'])){
         $nama = $_POST['nama'];
         $harga = $_POST['harga'];
@@ -16,11 +15,11 @@
 
             $path = "../assets/barang/";
             (move_uploaded_file($file, $path.$gambar));
-            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', id_kategori = '$kategori', gambar_barang = '$gambar' 
+            $query = mysqli_query($conn, "update barang set nama_barang = '$nama', harga_barang = '$harga', id_kategori = '$kategori', gambar_barang = '$gambar' 
                                                             where id_barang='$id' ");
 
         }else{
-            $query = mysqli_query($aVar, "update barang set nama_barang = '$nama', harga_barang = '$harga', id_kategori = '$kategori'
+            $query = mysqli_query($conn, "update barang set nama_barang = '$nama', harga_barang = '$harga', id_kategori = '$kategori'
                                                         where id_barang='$id' ");
 
         }
@@ -35,7 +34,7 @@
 
         
     }
-    $Qbarang = mysqli_query ($aVar, "select * from barang where id_barang = '$id'");
+    $Qbarang = mysqli_query ($conn, "select * from barang where id_barang = '$id'");
     $barang = mysqli_fetch_assoc($Qbarang);
 ?>
     <div class="container-fluid">

@@ -3,18 +3,17 @@
     require"includes/header.php";
 
     $id = $_GET['id'];
-    $aVar = new mysqli('localhost', 'root', '','online_shop');
 
     if(isset($_POST['update'])){
         $nama = $_POST['nama'];
 
-        $query = mysqli_query($aVar, "update kategori set nama_kategori = '$nama' where id_kategori = '$id'");
+        $query = mysqli_query($conn, "update kategori set nama_kategori = '$nama' where id_kategori = '$id'");
         if($query) {
             echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."admin/kategori.php'";
         }
     }
 
-    $query = mysqli_query ($aVar, "select nama_kategori from kategori where id_kategori = '$id'");
+    $query = mysqli_query ($conn, "select nama_kategori from kategori where id_kategori = '$id'");
     $data = mysqli_fetch_assoc($query);
 ?>
     <div class="container-fluid">
